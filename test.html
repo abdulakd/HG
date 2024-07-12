@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compliment Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        #compliment {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+        #photo {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            margin: 20px 0;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Compliment Generator</h1>
+    <img id="photo" src="" alt="Random Photo">
+    <div id="compliment"></div>
+    <button onclick="generateCompliment()">Get a Compliment</button>
+
+    <script>
+        const compliments = [
+            "Huda is the most beautiful butterfly in the world!",
+            "Huda makes everyone's world way better!",
+            "Huda's smile is prettier than sunset.",
+            "Huda deserves all the love in the world.",
+            "Huda's laugh is music to the ears.",
+            "Huda is so strong and inspiring."
+        ];
+
+        const photoFilenames = [
+            "1.png",
+            "2.png",
+            "3.png",
+            "4.png",
+            "5.png",
+            "6.png"
+        ];
+
+        function generateCompliment() {
+            const randomCompliment = compliments[Math.floor(Math.random() * compliments.length)];
+            const randomPhoto = photoFilenames[Math.floor(Math.random() * photoFilenames.length)];
+            document.getElementById('compliment').textContent = randomCompliment;
+            document.getElementById('photo').src = randomPhoto;
+        }
+    </script>
+</body>
+</html>
