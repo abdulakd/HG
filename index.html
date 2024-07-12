@@ -51,6 +51,14 @@
             "6.png"
         ];
 
+        // Preload images into browser cache
+        const imageObjects = [];
+        photoFilenames.forEach(filename => {
+            const img = new Image();
+            img.src = filename;
+            imageObjects.push(img);
+        });
+
         function generateCompliment() {
             const randomCompliment = compliments[Math.floor(Math.random() * compliments.length)];
             const randomPhoto = photoFilenames[Math.floor(Math.random() * photoFilenames.length)];
