@@ -9,6 +9,9 @@
             font-family: Arial, sans-serif;
             text-align: center;
             padding: 50px;
+            background: linear-gradient(to bottom, #1e3c72, #2a5298);
+            color: white;
+            background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
         }
         #compliment {
             font-size: 24px;
@@ -23,14 +26,22 @@
         button {
             font-size: 18px;
             padding: 10px 20px;
+            background-color: #ff7f50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ff6347;
         }
     </style>
 </head>
 <body>
-    <h1>Loving Huda</h1>
+    <h1>Compliment Generator</h1>
     <img id="photo" src="" alt="Random Photo">
     <div id="compliment"></div>
-    <button onclick="generateCompliment()">Love Huda</button>
+    <button onclick="generateCompliment()">Get a Compliment</button>
 
     <script>
         const compliments = [
@@ -39,10 +50,7 @@
             "Huda's smile is prettier than sunset.",
             "Huda deserves all the love in the world.",
             "Huda's laugh is music to the ears.",
-            "Huda is so strong and inspiring.",
-            "Huda gives everyone Life and Joy.",
-            "Huda is the hottest,prettiest and most amazing person.",
-            "Huda is the moon disguised in human form."
+            "Huda is so strong and inspiring."
         ];
 
         const photoFilenames = [
@@ -54,19 +62,26 @@
             "6.png"
         ];
 
-        // Preload images into browser cache
-        const imageObjects = [];
-        photoFilenames.forEach(filename => {
-            const img = new Image();
-            img.src = filename;
-            imageObjects.push(img);
-        });
+        let lastComplimentIndex = -1;
+        let lastPhotoIndex = -1;
+
+        function getRandomIndex(arrayLength, lastIndex) {
+            let index = Math.floor(Math.random() * arrayLength);
+            while (index === lastIndex) {
+                index = Math.floor(Math.random() * arrayLength);
+            }
+            return index;
+        }
 
         function generateCompliment() {
-            const randomCompliment = compliments[Math.floor(Math.random() * compliments.length)];
-            const randomPhoto = photoFilenames[Math.floor(Math.random() * photoFilenames.length)];
-            document.getElementById('compliment').textContent = randomCompliment;
-            document.getElementById('photo').src = randomPhoto;
+            const newComplimentIndex = getRandomIndex(compliments.length, lastComplimentIndex);
+            const newPhotoIndex = getRandomIndex(photoFilenames.length, lastPhotoIndex);
+
+            document.getElementById('compliment').textContent = compliments[newComplimentIndex];
+            document.getElementById('photo').src = photoFilenames[newPhotoIndex];
+
+            lastComplimentIndex = newComplimentIndex;
+            lastPhotoIndex = newPhotoIndex;
         }
     </script>
 </body>
