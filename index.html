@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compliment Generator</title>
+    <title>HudHud<3</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -76,10 +76,10 @@
         let lastPhotoIndex = -1;
 
         function getRandomIndex(arrayLength, lastIndex) {
-            let index = Math.floor(Math.random() * arrayLength);
-            while (index === lastIndex) {
+            let index;
+            do {
                 index = Math.floor(Math.random() * arrayLength);
-            }
+            } while (index === lastIndex);
             return index;
         }
 
